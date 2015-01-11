@@ -1,9 +1,9 @@
 #lang racket/base
 ;; For legal info, see file "info.rkt".
 
-(require (planet neil/mcfly))
+;(require (planet neil/mcfly))
 
-(doc (section "Introduction")
+#;(doc (section "Introduction")
 
      (para "The "
            (code "csv")
@@ -46,7 +46,7 @@ iterating over parsed CSV rows, and for converting CSV input to "
                                 "csv reader or input port or string"
                                 reader-or-in))))
 
-(doc (section "Reader Specs")
+#;(doc (section "Reader Specs")
 
      (para "CSV readers are constructed using "
            (deftech "reader specs")
@@ -191,7 +191,7 @@ premature record termination.  Default: "
       (add-to-new-spec orig-spec)
       (reverse new-spec))))
 
-(doc (section "Making Reader Makers")
+#;(doc (section "Making Reader Makers")
 
      (para "CSV readers are procedures that are constructed dynamically to
 close over a particular CSV input and yield a parsed row value each time the
@@ -507,7 +507,7 @@ themselves constructed by another procedure, "
          strip-trailing-whitespace?
          newlines-in-quotes?)))))
 
-(doc (defproc (make-csv-reader-maker (reader-spec csv-reader-spec?))
+#;(doc (defproc (make-csv-reader-maker (reader-spec csv-reader-spec?))
          (-> (or/c input-port? string?)
              (-> (listof string?)))
 
@@ -610,7 +610,7 @@ been yielded.")
             (portread (make-portread)))
         (lambda () (portread port))))))
 
-(doc (section "Making Readers")
+#;(doc (section "Making Readers")
 
      (para "In addition to being constructed from the result of "
            (racket make-csv-reader-maker)
@@ -618,7 +618,7 @@ been yielded.")
            (racket make-csv-reader)
            "."))
 
-(doc (defproc (make-csv-reader (in (or/c input-port? string?))
+#;(doc (defproc (make-csv-reader (in (or/c input-port? string?))
                                (reader-spec csv-reader-spec '()))
          (-> (listof string))
 
@@ -655,7 +655,7 @@ constructor is used.  For example, the reader from the "
              (make-csv-reader-maker spec))
          (%csv:in-arg 'make-csv-reader in))))))
 
-(doc (section "High-Level Conveniences")
+#;(doc (section "High-Level Conveniences")
 
      (para "Several convenience procedures are provided for iterating over the
 CSV rows and for converting the CSV to a list.")
@@ -674,7 +674,7 @@ all three of the following are equivalent:")
 
       (csv->list (make-csv-reader (open-input-string #,(italic "string"))))))
 
-(doc (defproc (csv-for-each (proc (-> (listof string?) any))
+#;(doc (defproc (csv-for-each (proc (-> (listof string?) any))
                             (reader-or-in (or/c (-> (listof string?))
                                                 input-port?
                                                 string?)))
@@ -697,7 +697,7 @@ undefined.")
           (begin (proc row)
                  (loop (reader)))))))
 
-(doc (defproc (csv-map (proc (-> (listof string?) any/c))
+#;(doc (defproc (csv-map (proc (-> (listof string?) any/c))
                        (reader-or-in (or/c (-> (listof string?))
                                            input-port?
                                            string?)))
@@ -739,7 +739,7 @@ and yields a list of the values of each application of "
 ;;                         (set-cdr! prior pair)
 ;;                         (loop pair)))))))))))
 
-(doc (defproc (csv->list (reader-or-in (or/c (-> (listof string?))
+#;(doc (defproc (csv->list (reader-or-in (or/c (-> (listof string?))
                                              input-port?
                                              string?)))
          (listof (listof string?))
@@ -768,14 +768,14 @@ and yields a list of the values of each application of "
 ;;                         (set-cdr! prior pair)
 ;;                         (loop pair)))))))))))
 
-(doc (section "Converting CSV to SXML/xexp")
+#;(doc (section "Converting CSV to SXML/xexp")
 
      (para "The "
            (racket csv->sxml)
            " procedure can be used to convert CSV to SXML/xexp format,
 for processing with various XML tools."))
 
-(doc (defproc (csv->sxml (reader-or-in (or/c (-> (listof string?))
+#;(doc (defproc (csv->sxml (reader-or-in (or/c (-> (listof string?))
                                              input-port?
                                              string?))
                          (row-element symbol? 'row)
@@ -952,7 +952,7 @@ are of the format ``"
 ;; row with 425 columns.  Wouldn't hurt to see if we can make things more
 ;; tail-recursive.
 
-(doc history
+#;(doc history
 
      (#:planet 2:0 #:date "2012-06-13"
                (itemlist

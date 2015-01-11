@@ -1,7 +1,18 @@
-#lang setup/infotab
+#lang info
 
-(define mcfly-planet       'neil/csv:2:0)
+
+(define collection "CSV")
 (define name               "csv")
+(define compile-omit-paths 'all)
+
+
+(define pkg-desc "This library provides spreadsheet-editor% class.")
+(define version "1.0.0")
+
+;;;;;;;;
+
+;(define mcfly-planet       'neil/csv:2:0)
+
 (define mcfly-subtitle     "Comma-Separated Value (CSV) Utilities in Racket")
 (define blurb              '("Comma-Separated Value (CSV) Utilities"))
 (define homepage           "http://www.neilvandyke.org/racket-csv/")
